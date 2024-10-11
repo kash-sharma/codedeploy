@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kartik-nginx-ingress
+  namespace: ingress-nginx  # Place this Ingress in the ingress-nginx namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Optional: Rewrite the URL path if needed
+spec:
+  rules:
+    - host: a01fb71e7975844c4a94801a2f23cf07-1310396236.ap-south-1.elb.amazonaws.com  # Replace with your domain or use a wildcard
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kartik-nginx-service  # Name of the service in the default namespace
+                port:
+                  number: 30000  # Port on which the service is listening
+

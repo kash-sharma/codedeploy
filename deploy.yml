@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kartik-nginx
+  labels:
+    app: kartik-nginx
+spec:
+  replicas: 2  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: kartik-nginx
+  template:
+    metadata:
+      labels:
+        app: kartik-nginx
+    spec:
+      containers:
+      - name: kartik-nginx
+        image: 471112563247.dkr.ecr.ap-south-1.amazonaws.com/huedge:latest  # Replace with your ECR image URI
+        ports:
+        - containerPort: 80  # The port your application listens on
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kartik-nginx-service
+spec:
+  selector:
+    app: kartik-nginx
+  ports:
+    - protocol: TCP
+      port: 80  # Port exposed by the service
+      targetPort: 80  # Port on the pod
+      nodePort: 30000  # Specify a port between 30000-32767 for NodePort
+  type: NodePort  # Type of service to create
+

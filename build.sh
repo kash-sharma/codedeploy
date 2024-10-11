@@ -10,7 +10,7 @@ IMAGE_TAG="latest"  # You can change this to a version number if desired
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 471112563247.dkr.ecr.$AWS_REGION.amazonaws.com
 
 # Build the Docker image
-docker build -t $IMAGE_NAME .
+docker build -t $IMAGE_NAME -f Dockerfile .
 
 # Tag the image for ECR
 docker tag $IMAGE_NAME:latest 47111256327.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG

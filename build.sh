@@ -18,5 +18,5 @@ docker tag $IMAGE_NAME:latest 47111256327.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR
 # Push the image to ECR
 docker push 471112566327.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
-echo "Docker image pushed to ECR: <aws_account_id>.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG"
+echo "Docker image pushed to ECR: 47111256327.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG"
 
